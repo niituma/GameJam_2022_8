@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     bool _haveLadder = false;
     [SerializeField]
     bool _haveballoon = false;
+    [SerializeField]
+    LayerMask _taskLayer;
     float _h, _v;
     Vector2 _dir;
 
@@ -56,7 +58,7 @@ public class PlayerController : MonoBehaviour
     GameObject SearchAreaInEnemies()
     {
         var Obj 
-            = Physics2D.OverlapCircleAll(transform.position, _radius).Where(e => e.tag == "Finish").OrderBy(e => Vector2.Distance(e.transform.position,this.transform.position)).FirstOrDefault();
+            = Physics2D.OverlapCircleAll(transform.position, _radius, _taskLayer).OrderBy(e => Vector2.Distance(e.transform.position,this.transform.position)).FirstOrDefault();
 
         if(Obj == null) { return null; }
 
