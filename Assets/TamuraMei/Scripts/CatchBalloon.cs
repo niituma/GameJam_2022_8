@@ -2,22 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>猫ちゃんをキャッチ</summary>
-public class RescueCat : TaskBase
+/// <summary>風船をキャッチ</summary>
+public class CatchBalloon : TaskBase
 {
-    [SerializeField] bool _help; //梯子つかう
+    [SerializeField] bool _catch;
 
+    // Update is called once per frame
     void Update()
     {
-        //ボタン押されたら_helpをtrueに
+        //ボタン押したら_catchをtrueに
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (_help)
+        if(_catch)
         {
             //消える前の処理してからクリア
-            //猫と子供がよろこぶアニメーション？
+            //子供が喜ぶアニメーション？
             Clear();
         }
     }
