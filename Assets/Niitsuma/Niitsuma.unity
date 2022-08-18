@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 5206958}
   - component: {fileID: 5206959}
   - component: {fileID: 5206957}
+  - component: {fileID: 5206960}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -223,7 +224,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
-  _radius: 1
+  _radius: 0.7
+  _haveLadder: 0
+  _haveballoon: 0
+  _taskLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!50 &5206958
 Rigidbody2D:
   serializedVersion: 4
@@ -269,8 +275,19 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.51}
+  m_Size: {x: 0.7, y: 0.51}
   m_EdgeRadius: 0
+--- !u!210 &5206960
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5206954}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &110613154
 GameObject:
   m_ObjectHideFlags: 0
@@ -282,9 +299,10 @@ GameObject:
   - component: {fileID: 110613156}
   - component: {fileID: 110613155}
   - component: {fileID: 110613157}
-  m_Layer: 0
+  - component: {fileID: 110613158}
+  m_Layer: 6
   m_Name: Gimmick (3)
-  m_TagString: Finish
+  m_TagString: Human
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -382,6 +400,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!210 &110613158
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 110613154}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &162885619
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,7 +483,9 @@ GameObject:
   - component: {fileID: 577816602}
   - component: {fileID: 577816601}
   - component: {fileID: 577816603}
-  m_Layer: 0
+  - component: {fileID: 577816604}
+  - component: {fileID: 577816605}
+  m_Layer: 6
   m_Name: Gimmick (2)
   m_TagString: Finish
   m_Icon: {fileID: 0}
@@ -521,7 +552,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 577816600}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.36, y: 3.47, z: 0}
+  m_LocalPosition: {x: 6.99, y: -0.09, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -554,6 +585,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &577816604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577816600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40a6c321e1731104c8ed4deb4766fab3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isAction: 0
+  _player: {fileID: 0}
+--- !u!210 &577816605
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 577816600}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &895270376
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +621,9 @@ GameObject:
   - component: {fileID: 895270378}
   - component: {fileID: 895270377}
   - component: {fileID: 895270379}
-  m_Layer: 0
+  - component: {fileID: 895270380}
+  - component: {fileID: 895270381}
+  m_Layer: 6
   m_Name: Gimmick (4)
   m_TagString: Finish
   m_Icon: {fileID: 0}
@@ -665,6 +723,31 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &895270380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895270376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb99626b9530c1b40a819d786a8fb662, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _isAction: 0
+  _player: {fileID: 0}
+--- !u!210 &895270381
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 895270376}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &965029312
 GameObject:
   m_ObjectHideFlags: 3
@@ -771,6 +854,7 @@ GameObject:
   - component: {fileID: 1016703741}
   - component: {fileID: 1016703740}
   - component: {fileID: 1016703742}
+  - component: {fileID: 1016703743}
   m_Layer: 0
   m_Name: Gimmick
   m_TagString: Finish
@@ -871,6 +955,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!210 &1016703743
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016703739}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &1828383089
 GameObject:
   m_ObjectHideFlags: 0
@@ -882,7 +977,8 @@ GameObject:
   - component: {fileID: 1828383091}
   - component: {fileID: 1828383090}
   - component: {fileID: 1828383092}
-  m_Layer: 0
+  - component: {fileID: 1828383093}
+  m_Layer: 6
   m_Name: Gimmick (1)
   m_TagString: Finish
   m_Icon: {fileID: 0}
@@ -982,6 +1078,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!210 &1828383093
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1828383089}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &1829729232
 GameObject:
   m_ObjectHideFlags: 0

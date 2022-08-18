@@ -13,6 +13,10 @@ public class PlayerController : MonoBehaviour
     bool _haveLadder = false;
     [SerializeField]
     bool _haveballoon = false;
+    [SerializeField]
+    LayerMask _taskLayer;
+
+    Vector2 _lastdir = new Vector2(0, 1);
     float _h, _v;
     Vector2 _dir;
 
@@ -34,13 +38,15 @@ public class PlayerController : MonoBehaviour
         _v = Input.GetAxisRaw("Vertical");
         if (Input.GetButtonDown("Fire1"))
         {
-            if (SearchAreaInEnemies()) { Action(); }
+            if (SearchAreaInTask()) { Action(); }
         }
         if (Input.GetButtonDown("Fire2"))
         {
             Panch();
         }
         _dir = new Vector2(_h, _v);
+
+        AnimateDir();
     }
     void FixedUpdate()
     {
@@ -51,14 +57,27 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, _radius);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(new Vector2(transform.position.x + _lastdir.x , transform.position.y + _lastdir.y), _radius);
     }
 
-    GameObject SearchAreaInEnemies()
+    GameObject SearchAreaInTask()
     {
         var Obj 
-            = Physics2D.OverlapCircleAll(transform.position, _radius).Where(e => e.tag == "Finish").OrderBy(e => Vector2.Distance(e.transform.position,this.transform.position)).FirstOrDefault();
+            = Physics2D.OverlapCircleAll(transform.position, _radius, _taskLayer).OrderBy(e => Vector2.Distance(e.transform.position,this.transform.position)).FirstOrDefault();
 
         if(Obj == null) { return null; }
+
+        return Obj.gameObject;
+    }
+
+    GameObject SearchAreaInHuman()
+    {
+        var Obj
+            = Physics2D.OverlapCircleAll(new Vector2(transform.position.x + _lastdir.x, transform.position.y + _lastdir.y)
+            , _radius, _taskLayer).Where(h => h.tag == "Human").OrderBy(e => Vector2.Distance(e.transform.position, this.transform.position)).FirstOrDefault();
+
+        if (Obj == null) { return null; }
 
         return Obj.gameObject;
     }
@@ -83,12 +102,27 @@ public class PlayerController : MonoBehaviour
 
     void Action()
     {
-        SearchAreaInEnemies().GetComponent<ActionBase>().Action();
+        SearchAreaInTask().GetComponent<ActionBase>()?.Action();
     }
 
     void Panch()
     {
-        Debug.Log("Panch");
+        if (!SearchAreaInHuman()) { return; }
+        Debug.Log(SearchAreaInHuman());
     }
+    void AnimateDir()
+    {
+        if (Mathf.Abs(_dir.x) > 0.5f)
+        {
+            _lastdir.x = _dir.x;
+            _lastdir.y = 0;
+        }
 
+        if (Mathf.Abs(_dir.y) > 0.5f)
+        {
+            _lastdir.y = _dir.y;
+            _lastdir.x = 0;
+        }
+
+    }
 }
