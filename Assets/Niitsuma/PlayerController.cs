@@ -9,11 +9,18 @@ public class PlayerController : MonoBehaviour
     float _speed = 3f;
     [SerializeField]
     float _radius = 3;
-
+    [SerializeField]
+    bool _haveLadder = false;
+    [SerializeField]
+    bool _haveballoon = false;
     float _h, _v;
     Vector2 _dir;
 
     Rigidbody2D _rb;
+
+    public bool HaveLadder { get => _haveLadder;}
+    public bool Haveballoon { get => _haveballoon;}
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,9 +62,28 @@ public class PlayerController : MonoBehaviour
 
         return Obj.gameObject;
     }
+
+    public void CatchLadder()
+    {
+        _haveLadder = true;
+    }
+    public void CatchBalloon()
+    {
+        _haveballoon = true;
+    }
+
+    public void UsedLadder()
+    {
+        _haveLadder = false;
+    }
+    public void PassBalloon()
+    {
+        _haveballoon = false;
+    }
+
     void Action()
     {
-        Debug.Log("Action");
+        SearchAreaInEnemies().GetComponent<ActionBase>().Action();
     }
 
     void Panch()
