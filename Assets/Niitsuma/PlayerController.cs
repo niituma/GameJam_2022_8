@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -15,6 +16,14 @@ public class PlayerController : MonoBehaviour
     bool _haveballoon = false;
     [SerializeField]
     LayerMask _taskLayer;
+    [SerializeField]
+    Image _cat;
+    [SerializeField]
+    Image _fight;
+    [SerializeField]
+    Image _ladder;
+    [SerializeField]
+    Image _balloon;
 
     Vector2 _lastdir = new Vector2(0, 1);
     float _h, _v;
@@ -23,14 +32,18 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D _rb;
     Animator _anim;
 
-    public bool HaveLadder { get => _haveLadder;}
-    public bool Haveballoon { get => _haveballoon;}
+    public bool HaveLadder { get => _haveLadder; }
+    public bool Haveballoon { get => _haveballoon; }
 
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
+
+        _cat.color = Color.gray;
+        _fight.color = Color.gray;
+        _ladder.color = Color.gray;
     }
 
     // Update is called once per frame
@@ -48,6 +61,43 @@ public class PlayerController : MonoBehaviour
         }
         _dir = new Vector2(_h, _v);
 
+
+        if (SearchAreaInTask()?.GetComponent<RescueCat>())
+        {
+            _cat.color = Color.white;
+            _fight.color = Color.gray;
+            _ladder.color = Color.gray;
+            _balloon.color = Color.gray;
+        }
+        else if (SearchAreaInTask()?.GetComponent<Hasigo>())
+        {
+            _cat.color = Color.gray;
+            _fight.color = Color.gray;
+            _ladder.color = Color.white;
+            _balloon.color = Color.gray;
+        }
+        else if (SearchAreaInTask()?.GetComponent<BalloonChild>())
+        {
+            _cat.color = Color.gray;
+            _fight.color = Color.gray;
+            _ladder.color = Color.gray;
+            _balloon.color = Color.white;
+        }
+        else if (SearchAreaInHuman())
+        {
+            _cat.color = Color.gray;
+            _fight.color = Color.white;
+            _ladder.color = Color.gray;
+            _balloon.color = Color.gray;
+        }
+        else
+        {
+            _cat.color = Color.gray;
+            _fight.color = Color.gray;
+            _ladder.color = Color.gray;
+            _balloon.color = Color.gray;
+        }
+
         AnimateDir();
     }
     void FixedUpdate()
@@ -60,15 +110,15 @@ public class PlayerController : MonoBehaviour
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, _radius);
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(new Vector2(transform.position.x + _lastdir.x , transform.position.y + _lastdir.y), _radius);
+        Gizmos.DrawWireSphere(new Vector2(transform.position.x + _lastdir.x, transform.position.y + _lastdir.y), _radius);
     }
 
     GameObject SearchAreaInTask()
     {
-        var Obj 
-            = Physics2D.OverlapCircleAll(transform.position, _radius, _taskLayer).OrderBy(e => Vector2.Distance(e.transform.position,this.transform.position)).FirstOrDefault();
+        var Obj
+            = Physics2D.OverlapCircleAll(transform.position, _radius, _taskLayer).OrderBy(e => Vector2.Distance(e.transform.position, this.transform.position)).FirstOrDefault();
 
-        if(Obj == null) { return null; }
+        if (Obj == null) { return null; }
 
         return Obj.gameObject;
     }
@@ -110,7 +160,22 @@ public class PlayerController : MonoBehaviour
     void Panch()
     {
         if (!SearchAreaInHuman()) { return; }
-        Debug.Log(SearchAreaInHuman());
+        if(SearchAreaInHuman().GetComponent<HumanEnum>().Humanmode == Human.thief)
+        {
+            FindObjectOfType<ScoreScript>().PlusScore();
+            FindObjectOfType<GameManager>().Good();
+        }
+        else if(SearchAreaInHuman().GetComponent<HumanEnum>().Humanmode == Human.boy 
+            || SearchAreaInHuman().GetComponent<HumanEnum>().Humanmode == Human.child)
+        {
+            FindObjectOfType<GameManager>().NotGood();
+        }
+        else
+        {
+            FindObjectOfType<GameManager>().VeryNotGood();
+        }
+
+        Destroy(SearchAreaInHuman());
     }
     void AnimateDir()
     {

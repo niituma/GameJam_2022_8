@@ -15,7 +15,7 @@ public class TimeManager : MonoBehaviour
 
     void Update()
     {
-        if (!finish) _seconds -= Time.deltaTime;
+        if (!finish && FadeSystem._fadeInFinish) _seconds -= Time.deltaTime;
 
         if (_seconds <= -1)
         {
