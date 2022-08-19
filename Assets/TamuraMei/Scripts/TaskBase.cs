@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class TaskBase : MonoBehaviour
 {
-    [SerializeField] float _limit;
-    [SerializeField] int _count; //コンボ用
+    [SerializeField] float _limit; //消えるまでの時間
+    [SerializeField] int _count = 0; //コンボ用
     //bool _clear;
     //public bool Clear { get => _clear; set => _clear = value; }
+
+    protected PlayerController _player;
+    void Start()
+    {
+        _player = FindObjectOfType<PlayerController>();
+    }
+
+    public int Count { get => _count; }
 
     void Update()
     {
@@ -22,11 +30,19 @@ public class TaskBase : MonoBehaviour
     /// <summary>タスククリアしたとき</summary>
     public void Clear()
     {
-        //消してカウントアップ
-        Destroy(gameObject);
+        //カウントアップして消す
         _count++;
+        Destroy(gameObject);
         //score+
     }
 
-    public int Count { get => _count; }
+    public virtual void Action()
+    {
+
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        Clear();
+    }
 }
