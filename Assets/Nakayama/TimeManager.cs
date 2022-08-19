@@ -7,15 +7,11 @@ public class TimeManager : MonoBehaviour
 {
 
     public bool finish { get; private set; }
-    Text _timeText;
+    [SerializeField] Text _timeText;
     [SerializeField] GameObject finishText;
     [SerializeField] private float _seconds = 60;//¡‚ÌUpdate‚Ì‚Ì•b”
     float _oldSeconds = 60;//‘O‚ÌUpdate‚Ì‚Ì•b”
 
-    private void Start()
-    {
-        _timeText = GetComponent<Text>();
-    }
 
     void Update()
     {
