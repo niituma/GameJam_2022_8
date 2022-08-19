@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         img.color = Color.clear;
-        _ngPoint -= 5;
+        //_ngPoint -= 1;
 
     }
     void Update()

@@ -98,10 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fdfbda1d7c0aea43b2b9112aa44b844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leftLine: -10
-  _rightLine: 10
-  _topLine: 10
-  _bottomLine: -10
+  _leftLine: -100
+  _rightLine: 0
+  _topLine: 0
+  _bottomLine: 0
   _walkerSpeed: 2
 --- !u!114 &1046330574503838389
 MonoBehaviour:
@@ -115,5 +115,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fce42799d30d186469a631dc8cefdac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _limit: 10
+  _limit: 20
   _count: 0
