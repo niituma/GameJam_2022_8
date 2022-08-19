@@ -21,6 +21,14 @@ public class RandomWalkControll : MonoBehaviour
     {
         _oldX = this.transform.position.x;  // スポーン時のX座標を保存
         _moveDirection = MoveRandomPosition();  //最初の移動方向を設定
+        if( _moveDirection.x < 0)
+        {
+            this.transform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+        else
+        {
+            this.transform.rotation = Quaternion.Euler(0, 0, 0);
+        }
     }
 
     void Update()
@@ -36,13 +44,13 @@ public class RandomWalkControll : MonoBehaviour
             if (_moveDirection.x <= _oldX && this.transform.eulerAngles.y == 180)   //移動方向が右から左になるとき、スプライトが右向きだったら左向きに変更
             {
                 Debug.Log("左に向く");
-                this.transform.rotation = Quaternion.Euler(0, 0, 0);
+                this.transform.rotation = Quaternion.Euler(0, 180, 0);
             }
             else /*if (_moveDirection.x > _oldX && this.transform.eulerAngles.y == 0)*/   //移動方向が左から右になるとき、スプライトが左向きだったら右向きに変更
 
             {
                 Debug.Log("右に向く");
-                this.transform.rotation = Quaternion.Euler(0, 180, 0);
+                this.transform.rotation = Quaternion.Euler(0, 0, 0);
             }
 
         }

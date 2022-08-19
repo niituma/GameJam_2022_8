@@ -328,10 +328,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fdfbda1d7c0aea43b2b9112aa44b844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leftMove: -10
-  _rightMove: 10
-  _topMove: 10
-  _bottomMove: -10
+  _leftLine: 0
+  _rightLine: 0
+  _topLine: 0
+  _bottomLine: 0
   _walkerSpeed: 5
 --- !u!1 &1635044721
 GameObject:
@@ -527,8 +527,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd32afa8d0bbc4542a1a0a3ebded6bdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leftMove: -20
-  _rightMove: 20
-  _topMove: 20
-  _bottomMove: -20
-  _walkerSpeed: 5
+  _leftLine: 0
+  _rightLine: 18
+  _walkerSpeed: 3

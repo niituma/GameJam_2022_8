@@ -9,8 +9,8 @@ public class Walk : MonoBehaviour
 {
     [SerializeField, Header("道路左端")] float _leftLine;
     [SerializeField, Header("道路右端")] float _rightLine;
-    [SerializeField, Header("道路上端")] float _topLine;
-    [SerializeField, Header("道路下端")] float _bottomLine;
+    //[SerializeField, Header("道路上端")] float _topLine;
+    //[SerializeField, Header("道路下端")] float _bottomLine;
     [Tooltip("左右どちらに動くか抽選")] int _horizonSelect;
     [SerializeField, Header("歩行スピード")] float _walkerSpeed;
     [Tooltip("移動先の座標")] Vector2 _moveDirection;
@@ -24,6 +24,7 @@ public class Walk : MonoBehaviour
 
         if (_horizonSelect == 0) //0なら"初動"は左向き
         {
+            this.transform.rotation = Quaternion.Euler(0, 180, 0);
             _moveDirection = new Vector2(_leftLine, this.transform.position.y);
             goRight = false;
         }
@@ -53,14 +54,16 @@ public class Walk : MonoBehaviour
         if(goRight)
         {
             Debug.Log("左に向く");
-            this.transform.rotation = Quaternion.Euler(0, 0, 0);
+            this.transform.rotation = Quaternion.Euler(0, 180, 0);
+            //this.transform.localScale = new Vector3(-1, 0, 0);
             _moveDirection = new Vector2(_leftLine, this.transform.position.y);
             goRight = false;
         }
         else
         {
             Debug.Log("右に向く");
-            this.transform.rotation = Quaternion.Euler(0, 180, 0);
+            this.transform.rotation = Quaternion.Euler(0, 0, 0);
+            //this.transform.localScale = new Vector3(-1, 1, 0);
             _moveDirection = new Vector2(_rightLine, this.transform.position.y);
             goRight = true;
         }
