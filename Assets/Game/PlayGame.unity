@@ -133,8 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 77620210}
   - component: {fileID: 77620209}
-  - component: {fileID: 77620208}
+  - component: {fileID: 77620213}
   - component: {fileID: 77620211}
+  - component: {fileID: 77620212}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -142,19 +143,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &77620208
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77620207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0aed6adb51c9b824db669ef2194c6666, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadePanel: {fileID: 1809995208}
 --- !u!114 &77620209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,8 +167,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 77620207}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.4176736, y: -0.66635966, z: -10.115293}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -200,6 +188,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timecount: 5
+--- !u!114 &77620212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77620207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cdf46ec9efa18341b3ca749059fd75c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnTimeMin: 2
+  _spawnTimeMax: 10
+  _spawned: {fileID: 1960994295601066348, guid: a00c014b3af4ca849938e24905505b03, type: 3}
+--- !u!114 &77620213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77620207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4df0079fa15a3074ca1367a4aa3803c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _fadeInSpeed: 0.8
+  _fadeOutSpeed: 0.01
+  _isStartFadeIn: 1
+  fadeImage: {fileID: 1809995208}
+  _sceneName: 
 --- !u!1 &108946869
 GameObject:
   m_ObjectHideFlags: 0
