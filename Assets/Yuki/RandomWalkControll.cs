@@ -43,13 +43,11 @@ public class RandomWalkControll : MonoBehaviour
 
             if (_moveDirection.x <= _oldX && this.transform.eulerAngles.y == 180)   //移動方向が右から左になるとき、スプライトが右向きだったら左向きに変更
             {
-                Debug.Log("左に向く");
                 this.transform.rotation = Quaternion.Euler(0, 180, 0);
             }
             else /*if (_moveDirection.x > _oldX && this.transform.eulerAngles.y == 0)*/   //移動方向が左から右になるとき、スプライトが左向きだったら右向きに変更
 
             {
-                Debug.Log("右に向く");
                 this.transform.rotation = Quaternion.Euler(0, 0, 0);
             }
 

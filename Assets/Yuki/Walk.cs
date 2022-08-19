@@ -53,7 +53,6 @@ public class Walk : MonoBehaviour
     {
         if(goRight)
         {
-            Debug.Log("ç∂Ç…å¸Ç≠");
             this.transform.rotation = Quaternion.Euler(0, 180, 0);
             //this.transform.localScale = new Vector3(-1, 0, 0);
             _moveDirection = new Vector2(_leftLine, this.transform.position.y);
@@ -61,7 +60,6 @@ public class Walk : MonoBehaviour
         }
         else
         {
-            Debug.Log("âEÇ…å¸Ç≠");
             this.transform.rotation = Quaternion.Euler(0, 0, 0);
             //this.transform.localScale = new Vector3(-1, 1, 0);
             _moveDirection = new Vector2(_rightLine, this.transform.position.y);
