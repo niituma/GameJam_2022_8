@@ -132,8 +132,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 77620210}
-  - component: {fileID: 77620209}
   - component: {fileID: 77620213}
+  - component: {fileID: 77620214}
   - component: {fileID: 77620211}
   - component: {fileID: 77620212}
   m_Layer: 0
@@ -143,23 +143,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &77620209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 77620207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dafd43bc40fa26a4fb053d1f6cd4e6f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fadePanel: {fileID: 1809995208}
-  _sceneName: 
-  _fade: {fileID: 77620209}
-  goodScore: 5000
-  nomalScore: 2000
 --- !u!4 &77620210
 Transform:
   m_ObjectHideFlags: 0
@@ -195,7 +178,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 77620207}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7cdf46ec9efa18341b3ca749059fd75c, type: 3}
   m_Name: 
@@ -215,11 +198,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4df0079fa15a3074ca1367a4aa3803c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _fadeInSpeed: 0.8
-  _fadeOutSpeed: 0.01
+  _fadeInSpeed: 0.5
+  _fadeOutSpeed: 0.5
+  _isFadeOut: 0
   _isStartFadeIn: 1
   fadeImage: {fileID: 1809995208}
   _sceneName: 
+--- !u!114 &77620214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77620207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dafd43bc40fa26a4fb053d1f6cd4e6f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sceneName: 
+  goodScore: 5000
+  nomalScore: 2000
 --- !u!1 &108946869
 GameObject:
   m_ObjectHideFlags: 0

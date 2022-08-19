@@ -8,7 +8,7 @@ public class FadeSystem : MonoBehaviour
 {
     [SerializeField] float _fadeInSpeed = 0.8f;
     [SerializeField] float _fadeOutSpeed = 0.01f;
-    bool _isFadeOut = default;
+    [SerializeField] bool _isFadeOut = default;
     bool _isFadeIn = default;
 
     [SerializeField, Tooltip("ƒQ[ƒ€ŠJn‚ÉFadeIn‚·‚é")] bool _isStartFadeIn = true;

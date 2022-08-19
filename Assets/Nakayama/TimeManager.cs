@@ -7,14 +7,13 @@ public class TimeManager : MonoBehaviour
 {
 
     [SerializeField] float _timecount = 60.0f;
-    static public bool finish;
+    public bool finish { get; private set; }
 
     //public Text timeText;
 
     void Update()
     {
         if(!finish)_timecount -= Time.deltaTime;
-        Debug.Log(_timecount);
 
         //ŽžŠÔ‚ð•\Ž¦‚·‚é
         //timeText.text = _timecount.ToString("f1") + "•b";

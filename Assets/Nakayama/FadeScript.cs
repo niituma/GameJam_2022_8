@@ -3,17 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class FadeScript : FadeSceneManager
+public class FadeScript : MonoBehaviour
 {
     [SerializeField] string _sceneName;
-    [SerializeField] FadeSceneManager _fade;
-    [SerializeField]int goodScore = 5000;
-    [SerializeField]int nomalScore = 2000;
+    [SerializeField] int goodScore = 5000;
+    [SerializeField] int nomalScore = 2000;
+    bool oneTime;
+    FadeSystem _fade;
+    TimeManager _timeManager;
 
     void Start()
     {
-        string _sceneName = SceneManager.GetActiveScene().name;
-        if (_sceneName == "Game") 
+        _timeManager = GetComponent<TimeManager>();
+        _fade = GetComponent<FadeSystem>();
+    }
+
+    void Update()
+    {
+        if (_timeManager.finish)
         {
             if (ScoreScript._scorePoint >= goodScore && GameManager._ngPoint >= 0)
             {
@@ -28,13 +35,11 @@ public class FadeScript : FadeSceneManager
                 _sceneName = "BadEnding";
             }
 
+            if (!oneTime)
+            {
+                oneTime = true;
+                _fade.OnFadeOut(_sceneName);
+            }
         }
-
-    }
-
-    void Update()
-    {
-        if(_sceneName == "Game" && TimeManager.finish) _fade.FadeScene(_sceneName, 1.5f);
-        if (Input.GetButtonDown("Fire1")) _fade.FadeScene(_sceneName, 1.5f);
     }
 }
