@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class TaskBase : MonoBehaviour
 {
-    [SerializeField] float _limit; //消えるまでの時間 スポーンする周期より長くならないように
+    [SerializeField] float _limit; //消えるまでの時間
     [SerializeField] int _count = 0; //コンボ用
     protected PlayerController _player;
-    protected ScoreScript _scoreScript;
+    protected ScoreScript _score;
+    ComboCount _comboCount;
 
     void Start()
     {
+        _comboCount = FindObjectOfType<ComboCount>();
         _player = FindObjectOfType<PlayerController>();
-        _scoreScript = FindObjectOfType<ScoreScript>();
+        _score = FindObjectOfType<ScoreScript>();
     }
 
     public int Count { get => _count; }
@@ -31,14 +33,13 @@ public class TaskBase : MonoBehaviour
     public void Clear()
     {
         //カウントアップして消す
-        _scoreScript.PlusScore();
-        _count++;
+        _score.PlusScore();
+        _comboCount.Combo++;
         Destroy(gameObject);
-        //score+
     }
 
     public virtual void Action()
     {
-        //Debug.Log("継承先でオーバーライドしてください");
+
     }
 }

@@ -6,7 +6,16 @@ public class Hasigo : TaskBase
 {
     public override void Action()
     {
-        _player.CatchLadder();
-        Clear();
+
+        if(!_player.HaveLadder)
+        {
+            _player.CatchLadder();
+            Clear();
+        }
+        else
+        {
+            return;
+        }
+        
     }
 }

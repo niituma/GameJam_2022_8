@@ -7,7 +7,16 @@ public class RescueCat : TaskBase
 {
     public override void Action()
     {
-        _player.UsedLadder();
-        Clear();
+
+        if(_player.HaveLadder)
+        {
+            _player.UsedLadder();
+            Clear();
+        }
+        else
+        {
+            return;
+        }
+        
     }
 }
