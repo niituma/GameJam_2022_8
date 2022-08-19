@@ -10,7 +10,7 @@ public class TaskBase : MonoBehaviour
     protected ScoreScript _score;
     ComboCount _comboCount;
 
-    void Start()
+    protected void Start()
     {
         _comboCount = FindObjectOfType<ComboCount>();
         _player = FindObjectOfType<PlayerController>();
