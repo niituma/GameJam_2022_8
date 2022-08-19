@@ -143,7 +143,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!210 &459318556
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -495,6 +495,9 @@ MonoBehaviour:
   _spawnTimeMin: 2
   _spawnTimeMax: 5
   _spawned: {fileID: 4528649478472309035, guid: 43410b2b015472f49ab3aca3d0369bae, type: 3}
+  _firstLevel: 0
+  _secondLevel: 0
+  _thirdLevel: 0
 --- !u!1 &1511574324
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,7 +679,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 0.8304935, y: 1}
+    m_SensorSize: {x: 1.1395417, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -733,6 +736,9 @@ MonoBehaviour:
   _spawnTimeMin: 2
   _spawnTimeMax: 5
   _spawned: {fileID: 4528649478472309035, guid: 43410b2b015472f49ab3aca3d0369bae, type: 3}
+  _firstLevel: 0
+  _secondLevel: 0
+  _thirdLevel: 0
 --- !u!4 &1937387791
 Transform:
   m_ObjectHideFlags: 0
