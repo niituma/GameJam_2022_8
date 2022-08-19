@@ -141,6 +141,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _limit: 10
   _count: 0
+  _clip: {fileID: 8300000, guid: b064573d7fb1d9d44a59f516db928d8f, type: 3}
 --- !u!114 &-365314271851065007
 MonoBehaviour:
   m_ObjectHideFlags: 0

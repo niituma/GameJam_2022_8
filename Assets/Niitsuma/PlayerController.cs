@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     Image _ladder;
     [SerializeField]
     Image _balloon;
+    AudioSource _audioSource;
+    [SerializeField]
+    AudioClip _PanchClip;
 
     TimeManager _timeManager;
     Vector2 _lastdir = new Vector2(0, 1);
@@ -42,6 +45,7 @@ public class PlayerController : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
         _timeManager = FindObjectOfType<TimeManager>();
+        _audioSource = FindObjectOfType<AudioSource>();
 
         _cat.color = Color.gray;
         _fight.color = Color.gray;
@@ -167,6 +171,9 @@ public class PlayerController : MonoBehaviour
     void Panch()
     {
         if (!SearchAreaInHuman()) { return; }
+
+        _audioSource.PlayOneShot(_PanchClip);
+
         if (SearchAreaInHuman().GetComponent<HumanEnum>().Humanmode == Human.thief)
         {
             FindObjectOfType<ScoreScript>().PlusScore();
