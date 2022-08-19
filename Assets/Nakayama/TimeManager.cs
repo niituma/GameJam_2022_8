@@ -12,7 +12,10 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private float _seconds = 60;//¡‚ÌUpdate‚Ì‚Ì•b”
     float _oldSeconds = 60;//‘O‚ÌUpdate‚Ì‚Ì•b”
 
-
+    private void Start()
+    {
+        _timeText.text = $"{((int)_seconds)}";
+    }
     void Update()
     {
         if (!finish && FadeSystem._fadeInFinish) _seconds -= Time.deltaTime;

@@ -137,6 +137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1.5
-  _lifeTime: 5
+  _lifeTime: 20
   _amplitube: 1.5
   _SpeedY: 3

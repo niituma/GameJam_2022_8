@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     Image _balloon;
 
+    TimeManager _timeManager;
     Vector2 _lastdir = new Vector2(0, 1);
     float _h, _v;
     Vector2 _dir;
@@ -40,6 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _anim = GetComponent<Animator>();
+        _timeManager = FindObjectOfType<TimeManager>();
 
         _cat.color = Color.gray;
         _fight.color = Color.gray;
@@ -49,6 +51,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_timeManager.finish) { return; }
+
         _h = Input.GetAxisRaw("Horizontal");
         _v = Input.GetAxisRaw("Vertical");
         if (Input.GetButtonDown("Fire1"))
@@ -71,10 +75,13 @@ public class PlayerController : MonoBehaviour
         }
         else if (SearchAreaInTask()?.GetComponent<Hasigo>())
         {
-            _cat.color = Color.gray;
-            _fight.color = Color.gray;
-            _ladder.color = Color.white;
-            _balloon.color = Color.gray;
+            if (!_haveLadder)
+            {
+                _cat.color = Color.gray;
+                _fight.color = Color.gray;
+                _ladder.color = Color.white;
+                _balloon.color = Color.gray;
+            }
         }
         else if (SearchAreaInTask()?.GetComponent<BalloonChild>())
         {
@@ -160,12 +167,12 @@ public class PlayerController : MonoBehaviour
     void Panch()
     {
         if (!SearchAreaInHuman()) { return; }
-        if(SearchAreaInHuman().GetComponent<HumanEnum>().Humanmode == Human.thief)
+        if (SearchAreaInHuman().GetComponent<HumanEnum>().Humanmode == Human.thief)
         {
             FindObjectOfType<ScoreScript>().PlusScore();
             FindObjectOfType<GameManager>().Good();
         }
-        else if(SearchAreaInHuman().GetComponent<HumanEnum>().Humanmode == Human.boy 
+        else if (SearchAreaInHuman().GetComponent<HumanEnum>().Humanmode == Human.boy
             || SearchAreaInHuman().GetComponent<HumanEnum>().Humanmode == Human.child)
         {
             FindObjectOfType<GameManager>().NotGood();
