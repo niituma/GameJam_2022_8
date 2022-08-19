@@ -13,6 +13,7 @@ public class SpawnManager : MonoBehaviour
 
     void Start()
     {
+        _taskBase = _spawned.GetComponent<TaskBase>();
         _spawnTime = Random.Range(_spawnTimeMin, _spawnTimeMax);
         Debug.Log(_spawnTime);
     }
