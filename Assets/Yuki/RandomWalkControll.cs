@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 
 /// <summary>
-/// あちこちに動く通行人の移動を制御するスクリプト。該当の通行人のPrefabにアタッチする。
+/// あちこちに動く通行人の移動を制御するクラス。該当の通行人のPrefabにアタッチする。
 /// </summary>
 /// 
 public class RandomWalkControll : MonoBehaviour
 {
-    [SerializeField, Tooltip("道路ゾーン左端")] float _leftMove;
-    [SerializeField, Tooltip("道路ゾーン右端")] float _rightMove;
-    [SerializeField, Tooltip("道路ゾーン上端")] float _topMove;
-    [SerializeField, Tooltip("道路ゾーン下端")] float _bottomMove;
+    [SerializeField, Header("道路左端")] float _leftLine;
+    [SerializeField, Header("道路右端")] float _rightLinr;
+    [SerializeField, Header("道路上端")] float _topLine;
+    [SerializeField, Header("道路下端")] float _bottomLine;
     [Tooltip("前回移動時のX座標")] float _oldX;
     [SerializeField, Header("歩行スピード")] float _walkerSpeed;
     [Tooltip("ランダム移動先の座標")] Vector2 _moveDirection;
@@ -51,8 +51,8 @@ public class RandomWalkControll : MonoBehaviour
 
     private Vector2 MoveRandomPosition()  // 目的地を生成、xとyのポジションをランダムに値を取得 
     {
-        float _ranWidth = Random.Range(_leftMove, _rightMove);
-        float _ranHight = Random.Range(_bottomMove, _topMove);
+        float _ranWidth = Random.Range(_leftLine, _rightLinr);
+        float _ranHight = Random.Range(_bottomLine, _topLine);
         Vector2 _randomPosi = new Vector2(_ranWidth, _ranHight);
         return _randomPosi;
     }

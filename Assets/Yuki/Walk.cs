@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// まっすぐ左右に動く通行人の移動を制御するスクリプト。該当の通行人のPrefabにアタッチする。
+/// </summary>
 public class Walk : MonoBehaviour
 {
-    [SerializeField, Tooltip("道路ゾーン左端")] float _leftMove;
-    [SerializeField, Tooltip("道路ゾーン右端")] float _rightMove;
-    [SerializeField, Tooltip("道路ゾーン上端")] float _topMove;
-    [SerializeField, Tooltip("道路ゾーン下端")] float _bottomMove;
+    [SerializeField, Header("道路左端")] float _leftLine;
+    [SerializeField, Header("道路右端")] float _rightLine;
+    [SerializeField, Header("道路上端")] float _topLine;
+    [SerializeField, Header("道路下端")] float _bottomLine;
     [Tooltip("左右どちらに動くか抽選")] int _horizonSelect;
     [SerializeField, Header("歩行スピード")] float _walkerSpeed;
-
-    float _xPos;
+    [Tooltip("移動先の座標")] Vector2 _moveDirection;
     bool goRight;
 
 
@@ -19,13 +21,15 @@ public class Walk : MonoBehaviour
     void Start()
     {
         _horizonSelect = Random.Range(0, 2);
-        _xPos = this.transform.position.x;
+
         if (_horizonSelect == 0) //0なら"初動"は左向き
         {
+            _moveDirection = new Vector2(_leftLine, this.transform.position.y);
             goRight = false;
         }
         else //1なら"初動"右向き
         {
+            _moveDirection = new Vector2(_rightLine, this.transform.position.y);
             goRight = true;
         }
 
@@ -34,39 +38,32 @@ public class Walk : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveAndTurn();
+        this.transform.position = Vector2.MoveTowards(this.transform.position, _moveDirection, _walkerSpeed * Time.deltaTime);  //目的地へ移動
+        if(_moveDirection.x == this.transform.position.x)
+        {
+            ChangeDirection();
+        }
     }
 
     /// <summary>
-    /// 左右に歩き、端に到達したら方向転換するメソッド
+    /// 端に到達したら呼ばれる、方向転換するメソッド
     /// </summary>
-    void MoveAndTurn()
+    private void ChangeDirection()
     {
-        if (goRight)
+        if(goRight)
         {
-            while (this.transform.position.x < _rightMove)
-            {
-                _xPos += _walkerSpeed * Time.deltaTime;
-                this.transform.position = new Vector2(_xPos, this.transform.position.y);
-            }
-
             Debug.Log("左に向く");
             this.transform.rotation = Quaternion.Euler(0, 0, 0);
+            _moveDirection = new Vector2(_leftLine, this.transform.position.y);
             goRight = false;
         }
         else
         {
-            while (transform.position.x > _leftMove)
-            {
-                _xPos -= _walkerSpeed * Time.deltaTime;
-                this.transform.position = new Vector2(_xPos, this.transform.position.y);
-            }
-
             Debug.Log("右に向く");
             this.transform.rotation = Quaternion.Euler(0, 180, 0);
+            _moveDirection = new Vector2(_rightLine, this.transform.position.y);
             goRight = true;
         }
     }
-
 }
 
