@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
 
     void Action()
     {
-        SearchAreaInTask().GetComponent<ActionBase>()?.Action();
+        SearchAreaInTask().GetComponent<TaskBase>()?.Action();
     }
 
     void Panch()
