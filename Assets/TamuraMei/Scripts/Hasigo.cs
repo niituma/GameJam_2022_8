@@ -7,5 +7,6 @@ public class Hasigo : TaskBase
     public override void Action()
     {
         _player.CatchLadder();
+        Clear();
     }
 }

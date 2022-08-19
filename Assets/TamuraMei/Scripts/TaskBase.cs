@@ -40,9 +40,4 @@ public class TaskBase : MonoBehaviour
     {
 
     }
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        Clear();
-    }
 }

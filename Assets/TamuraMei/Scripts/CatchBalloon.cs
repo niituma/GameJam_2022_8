@@ -7,7 +7,7 @@ public class CatchBalloon : TaskBase
 {
     public override void Action()
     {
-        Clear();
         _player.PassBalloon();
+        Clear();
     }
 }
