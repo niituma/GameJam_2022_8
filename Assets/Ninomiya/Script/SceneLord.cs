@@ -12,6 +12,8 @@ public class SceneLord : MonoBehaviour
  
     public void scenelord(string scenename) //Ÿ‚ÌScene“Ç‚İ‚İ
     {
+        GameManager._ngPoint = 0;
+        ScoreScript._scorePoint = 0;
         SceneManager.LoadScene(scenename);
     }
     public void SwtchLight() //‘€ìà–¾‚Ö‚ÌØ‚è‘Ö‚¦
