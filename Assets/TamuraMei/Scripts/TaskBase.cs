@@ -6,13 +6,12 @@ public class TaskBase : MonoBehaviour
 {
     [SerializeField] float _limit; //消えるまでの時間
     [SerializeField] int _count = 0; //コンボ用
-    //bool _clear;
-    //public bool Clear { get => _clear; set => _clear = value; }
-
     protected PlayerController _player;
+    protected ScoreScript _scoreScript;
     void Start()
     {
         _player = FindObjectOfType<PlayerController>();
+        _scoreScript = FindObjectOfType<ScoreScript>();
     }
 
     public int Count { get => _count; }
@@ -31,6 +30,7 @@ public class TaskBase : MonoBehaviour
     public void Clear()
     {
         //カウントアップして消す
+        _scoreScript.PlusScore();
         _count++;
         Destroy(gameObject);
         //score+
@@ -38,6 +38,6 @@ public class TaskBase : MonoBehaviour
 
     public virtual void Action()
     {
-
+        Debug.Log("継承先でオーバーライドしてください");
     }
 }
