@@ -34,15 +34,15 @@ public class GameManager : MonoBehaviour
     }
     public void Good()
     {
-        _ngPoint = 1;
+        _ngPoint = 3;
     }
 
     public void NotGood()
     {
-        _ngPoint -= 1;
+        _ngPoint -= 2;
     }
     public void VeryNotGood()
     {
-        _ngPoint -= 3;
+        _ngPoint -= 5;
     }
 }

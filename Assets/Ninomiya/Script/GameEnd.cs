@@ -12,10 +12,10 @@ public class GameEnd : MonoBehaviour
     }
     private void EndGame() //ゲームを強制終了
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            UnityEditor.EditorApplication.isPlaying = false; //UnityEditorの実行を停止する
-        }
+        //if(Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    UnityEditor.EditorApplication.isPlaying = false; //UnityEditorの実行を停止する
+        //}
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             Application.Quit();// ゲームを終了する
