@@ -6,22 +6,32 @@ using UnityEngine.UI;
 public class TimeManager : MonoBehaviour
 {
 
-    [SerializeField] float _timecount = 60.0f;
     public bool finish { get; private set; }
+    Text _timeText;
 
-    //public Text timeText;
+    [SerializeField] private float _seconds = 60;//¡‚ÌUpdate‚Ì‚Ì•b”
+    float _oldSeconds = 60;//‘O‚ÌUpdate‚Ì‚Ì•b”
+
+    private void Start()
+    {
+        _timeText = GetComponent<Text>();
+    }
 
     void Update()
     {
-        if(!finish)_timecount -= Time.deltaTime;
+        if (!finish) _seconds -= Time.deltaTime;
 
-        //ŠÔ‚ğ•\¦‚·‚é
-        //timeText.text = _timecount.ToString("f1") + "•b";
-
-        if (_timecount <= 0)
+        if (_seconds <= -1)
         {
-            //timeText.text = "ŠÔ‚É‚È‚è‚Ü‚µ‚½I";
             finish = true;
         }
+
+        if ((int)_seconds != (int)_oldSeconds)
+        {
+            _timeText.text = $"{((int)_seconds + 1)}";
+        }
+        _oldSeconds = _seconds;
     }
 }
+    
+
