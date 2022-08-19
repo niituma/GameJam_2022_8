@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
     Vector2 _dir;
 
     Rigidbody2D _rb;
+    Animator _anim;
 
     public bool HaveLadder { get => _haveLadder;}
     public bool Haveballoon { get => _haveballoon;}
@@ -29,6 +30,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -123,6 +125,10 @@ public class PlayerController : MonoBehaviour
             _lastdir.y = _dir.y;
             _lastdir.x = 0;
         }
-
+        _anim.SetFloat("DirX", _dir.x);
+        _anim.SetFloat("DirY", _dir.y);
+        _anim.SetFloat("LastDirX", _lastdir.x);
+        _anim.SetFloat("LastDirY", _lastdir.y);
+        _anim.SetFloat("Input", _dir.magnitude);
     }
 }
