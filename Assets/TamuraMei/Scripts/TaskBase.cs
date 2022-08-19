@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class TaskBase : MonoBehaviour
 {
-    [SerializeField] float _limit; //消えるまでの時間
+    [SerializeField] float _limit; //消えるまでの時間 スポーンする周期より長くならないように
     [SerializeField] int _count = 0; //コンボ用
     protected PlayerController _player;
     protected ScoreScript _scoreScript;
+
     void Start()
     {
         _player = FindObjectOfType<PlayerController>();
@@ -38,6 +39,6 @@ public class TaskBase : MonoBehaviour
 
     public virtual void Action()
     {
-        Debug.Log("継承先でオーバーライドしてください");
+        //Debug.Log("継承先でオーバーライドしてください");
     }
 }

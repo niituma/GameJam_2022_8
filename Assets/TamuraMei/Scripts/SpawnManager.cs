@@ -10,6 +10,10 @@ public class SpawnManager : MonoBehaviour
     [SerializeField] int _spawnTimeMax;
     [SerializeField, Tooltip("スポーンさせるゲームオブジェクト")] GameObject _spawned;
     TaskBase _taskBase;
+    [SerializeField] int _firstLevel; //レベルが1になるときのコンボ数
+    [SerializeField] int _secondLevel; //レベルが2になるときのコンボ数
+    [SerializeField] int _thirdLevel; //レベルが2になるときのコンボ数
+    [SerializeField] int _levelUp; //レベルが上がった時に周期がどれくらい早くなるか
 
     void Start()
     {
@@ -28,13 +32,17 @@ public class SpawnManager : MonoBehaviour
         {
             i = 0;
         }
-        else if (_taskBase.Count == 10)
+        else if (_taskBase.Count == _firstLevel)
         {
-            i = 2;
+            i += _levelUp;
         }
-        else if (_taskBase.Count == 20)
+        else if (_taskBase.Count == _secondLevel)
         {
-            i = 4;
+            i += _levelUp;
+        }
+        else if(_taskBase.Count == _thirdLevel)
+        {
+            i += _levelUp;
         }
 
         if (_spawnTime < i)
