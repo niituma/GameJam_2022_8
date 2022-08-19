@@ -18,6 +18,8 @@ public class FadeSystem : MonoBehaviour
     float alfa;
     SceneManagerScript _sceneChanger;
 
+    static public bool _fadeInFinish;
+
     private void Start()
     {
         _sceneChanger = GetComponent<SceneManagerScript>();
@@ -64,6 +66,7 @@ public class FadeSystem : MonoBehaviour
         {
             _isFadeIn = false;
             fadeImage.gameObject.SetActive(false);
+            _fadeInFinish = true;
         }
     }
     void StartFadeOut()
